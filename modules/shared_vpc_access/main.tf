@@ -30,6 +30,7 @@ locals {
     "datastream.googleapis.com" : format("service-%s@gcp-sa-datastream.iam.gserviceaccount.com", local.service_project_number)
     "notebooks.googleapis.com" : format("service-%s@gcp-sa-notebooks.iam.gserviceaccount.com", local.service_project_number)
     "networkconnectivity.googleapis.com" : format("service-%s@gcp-sa-networkconnectivity.iam.gserviceaccount.com", local.service_project_number)
+    "workstations.googleapis.com" : format("service-%s@gcp-sa-workstations.iam.gserviceaccount.com", local.service_project_number)
   }
   gke_shared_vpc_enabled        = contains(var.active_apis, "container.googleapis.com")
   composer_shared_vpc_enabled   = contains(var.active_apis, "composer.googleapis.com")
@@ -48,6 +49,7 @@ locals {
   if "composer.googleapis.com" compute.networkUser role granted to composer service account for Composer on shared VPC subnets
   if "notebooks.googleapis.com" compute.networkUser role granted to notebooks service account for Notebooks on shared VPC Project
   if "networkconnectivity.googleapis.com" compute.networkUser role granted to notebooks service account for Network Connectivity on shared VPC Project
+  if "workstations.googleapis.com" compute.networkUser role granted to notebooks service account for Cloud Workstations on shared VPC Project
   See: https://cloud.google.com/vpc/docs/configure-service-connection-policies#configure-host-project
   See: https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-shared-vpc
        https://cloud.google.com/dataflow/docs/concepts/security-and-permissions#cloud_dataflow_service_account
